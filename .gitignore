@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+*.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+*.egg
+dist/
+build/
+*.log
+
+# GTK 4 (generally no specific files, but ignore build artifacts)
+*.so
+*.dll
+*.dylib
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test and coverage
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+
+# Misc
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Project Build
+.flatpak-builder/
+build-dir/
+*.egg-info/
