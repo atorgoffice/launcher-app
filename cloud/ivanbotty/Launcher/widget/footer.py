@@ -6,12 +6,13 @@ from cloud.ivanbotty.Launcher.config.config import UI_CONFS, PREFERENCES
 from cloud.ivanbotty.Launcher.widget.preferences import Preferences
 
 class Footer(Gtk.Box):
-    def __init__(self):
+    def __init__(self, app):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self.set_margin_top(UI_CONFS[PREFERENCES]["margin_top"])
         self.set_margin_bottom(UI_CONFS[PREFERENCES]["margin_bottom"])
         self.set_margin_start(UI_CONFS[PREFERENCES]["margin_start"])
         self.set_margin_end(UI_CONFS[PREFERENCES]["margin_end"])
+        self.app = app
         shortcuts = [
             ("Return", "Select"),
             ("Down", "Navigate"),
@@ -25,7 +26,7 @@ class Footer(Gtk.Box):
         logo_content.set_icon_name("applications-system")
         logo_button.set_child(logo_content)
 
-        logo_button.connect("clicked", lambda button: Preferences().present())
+        logo_button.connect("clicked", lambda button: Preferences(self.app).present())
 
         spacer = Gtk.Box()
         spacer.set_hexpand(True)
