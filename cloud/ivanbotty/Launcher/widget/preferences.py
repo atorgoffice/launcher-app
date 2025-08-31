@@ -4,8 +4,9 @@ from gi.repository import Adw
 from cloud.ivanbotty.Launcher.config.config import COMPACT_STYLE, DEFAULT_STYLE, PREFERENCES
 
 class Preferences(Adw.PreferencesDialog):
-    def __init__(self):
+    def __init__(self, app):
         super().__init__(title="Preferences")
+        self.app = app
 
         # Create the preferences page and group
         page = Adw.PreferencesPage()
@@ -19,6 +20,19 @@ class Preferences(Adw.PreferencesDialog):
         )
         self.switch.connect("notify::active", self.on_switch_toggled)
         general_group.add(self.switch)
+
+        extension_group = Adw.PreferencesGroup(title="Extensions")
+
+        extension_list = self.app.extensions_service.list_extensions()
+        for extension in extension_list:
+            # Switch row for enabling/disabling extension support
+            self.switch = Adw.SwitchRow(
+                active=extension.enabled,
+                title=extension.name if extension.name else "Unnamed Extension",
+                subtitle=extension.description if extension.description else "No description available."
+            )
+            self.switch.connect("notify::active", self.on_switch_toggled)
+            extension_group.add(self.switch)
 
         about_group = Adw.PreferencesGroup(title="About")
 
@@ -37,6 +51,7 @@ class Preferences(Adw.PreferencesDialog):
 
         # Add group to page and page to dialog
         page.add(general_group)
+        page.add(extension_group)
         page.add(about_group)
         self.add(page)
 
