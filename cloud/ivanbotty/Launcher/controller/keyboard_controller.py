@@ -20,7 +20,7 @@ class KeyboardController(Gtk.EventControllerKey):
         if action:
             action()
             return True  # Event handled
-        return self.reset_search()
+        return False  # Event not handled
 
     def scroll_list(self, direction):
         self.app.listbox.get_first_child().grab_focus()
