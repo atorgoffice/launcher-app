@@ -1,10 +1,12 @@
 # Launcher
+> [!IMPORTANT]
+> **Launcher** is currently under active development. Features, interfaces, and functionality may change frequently. Contributions and feedback are welcome!
 
 <p align="center">
     <img src="./cloud/ivanbotty/Launcher/resources/icons8-ricerca-96.svg" alt="Launcher Icon" width="96">
 </p>
 
-**Launcher** is a modern desktop application launcher for Linux, built with GTK4 and Adwaita. It offers instant search, a sleek user interface, and seamless integration for launching your installed applications.
+**Launcher** is a modern desktop application launcher for Linux, built with GTK4 and Adwaita. It features instant search, a sleek user interface, and seamless integration for launching your installed applications.
 
 <p align="center">
     <video src="./assets/launcher.mp4" controls width="480">
@@ -16,14 +18,37 @@
 
 ## Features
 
-- Modern user interface with Adwaita and GTK4
-- Instant search among installed applications
-- Flatpak and sandbox environment support
-- Selectable compact and extended layouts
-- SVG icon display and app information
-- Integrated user preferences
+- Sleek, modern interface built with Adwaita and GTK4
+- Flatpak support for sandboxed environments
+- Switchable compact and extended layouts
+- SVG icon rendering and detailed app information
+- Integrated user preferences for customization
+- Extension system for enabling/disabling features
 
-## Installation
+### Core Services
+
+- **ApplicationsService**
+    - Automatically discovers installed apps from `.desktop` files
+    - Provides instant search and filtering by name
+    - Maintains a dynamic, ordered app list via `Gio.ListStore`
+
+- **ExtensionService**
+    - Manages extensions: add, remove, enable, disable
+    - Supports searching and listing extensions by name
+    - Allows extensions to register custom services, expanding functionality
+
+- **CommandService**
+    - Executes commands linked to applications for fast launching
+    - Integrates with the app model for seamless execution
+
+- **MathService**
+    - Built-in calculator for evaluating mathematical expressions
+
+- **AIService**
+    > [!NOTE]
+    >  Currently under development; not yet available
+    - Integration with AI APIs for natural language queries and smart assistance
+
 
 ### Requirements
 
