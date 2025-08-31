@@ -3,8 +3,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
-from gi.repository import Gtk, Adw, Gio
+from gi.repository import Gtk, Adw
 
+from .services.extensions_service import ExtensionService
 from .services.applications_service import ApplicationsService
 from .controller.keyboard_controller import KeyboardController
 from cloud.ivanbotty.Launcher.config.config import UI_CONFS, PREFERENCES
@@ -22,9 +23,14 @@ class App(Adw.Application):
         self.listbox.set_visible(False)
         self.entry = None
 
-        # Load applications at startup
-        self.applications_service = ApplicationsService()
-        self.applications_service.load_applications()
+        self.extensions_service = ExtensionService()
+        self.extensions_service.add_extension(
+            name="Application",
+            description="Find applications",
+            service=ApplicationsService(),
+            version="1.0",
+            author="ivanbotty"
+        )
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -38,8 +44,7 @@ class App(Adw.Application):
         self.win.add_controller(event_controller)
 
         self.entry = Gtk.Entry()
-        self.entry.set_placeholder_text("Search app or file…")
-        self.entry.connect("changed", self.on_entry_changed)
+        self.entry.set_placeholder_text("Type to search...")
         self.entry.set_size_request(UI_CONFS[PREFERENCES]["entry_width"], UI_CONFS[PREFERENCES]["entry_height"])
 
         self.listbox.set_visible(True)
@@ -55,10 +60,14 @@ class App(Adw.Application):
         self.listbox.set_hexpand(True)
 
         # Show all apps at startup
-        filtered_store = self.applications_service.filter_applications("")
-        self.listbox.bind_model(filtered_store, lambda app: self.create_row(app))
+        self.apps = self.extensions_service.get_extension("Application")
+        if self.apps:
+            print("Application extension found, loading applications...")
+            self.apps.load_applications()
+            filtered_store = self.apps.filter_applications("")
+            self.listbox.bind_model(filtered_store, lambda app: self.create_row(app))
 
-        footer = Footer()
+        footer = Footer(self)
 
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         box.set_margin_top(UI_CONFS[PREFERENCES]["margin_top"])
@@ -80,8 +89,3 @@ class App(Adw.Application):
         print("Application activated")
         if self.win is not None:
             self.win.present()
-
-    def on_entry_changed(self, entry):
-        search_text = entry.get_text().lower()
-        filtered_store = self.applications_service.filter_applications(search_text)
-        self.listbox.bind_model(filtered_store, lambda app: self.create_row(app))
