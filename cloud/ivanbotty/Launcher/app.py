@@ -128,11 +128,12 @@ class App(Adw.Application):
         self.win.set_content(box)
 
     def create_row(self, app):
-        """Create a row widget for the given app."""
-        if app.enabled is True:
+        """Create a row widget for the given app extension."""
+        if getattr(app, "enabled", False):
             row = Row(app)
             row.app_model = app
             return row
+        return None
 
     def do_activate(self):
         """Activate the application and show the window."""
