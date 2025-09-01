@@ -1,13 +1,14 @@
 from pathlib import Path
 
-# Standard paths for Flatpak launcher applications
-USER_DIR = Path.home() / ".local/share/applications"
 SYSTEM_DIRS = [
-    Path("/usr/share/applications"),          # Exposed by Flatpak
-    Path("/run/host/share/applications"),     # Host Flatpak
+    Path("/usr/share/applications"),                                # system applications
+    Path("/run/host/usr/share/applications"),                       # host applications
+    Path("/run/host/var/lib/flatpak/exports/share/applications"),   # flatpak system-wide applications
+    Path.home() / ".local/share/applications",                      # user applications
+    Path("/run/host" + str(Path.home()) + "/.local/share/applications")  # user applications from host perspective
 ]
 
-ALL_APP_DIRS = [USER_DIR] + SYSTEM_DIRS
+ALL_APP_DIRS = SYSTEM_DIRS
 
 # Define style names
 COMPACT_STYLE = "compact"
