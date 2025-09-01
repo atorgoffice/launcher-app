@@ -77,7 +77,8 @@ class App(Adw.Application):
             "app": self.extensions_service.get_extension("Application"),
             "math": self.extensions_service.get_extension("Math"),
             "command": self.extensions_service.get_extension("Command"),
-            "ai": self.extensions_service.get_extension("AI")
+            "ai": self.extensions_service.get_extension("AI"),
+            "extensions": self.extensions_service
         }
 
         # Initialize controllers
