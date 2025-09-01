@@ -1,4 +1,3 @@
-from email.mime import application
 import os, gi
 
 gi.require_version("Gtk", "4.0")
