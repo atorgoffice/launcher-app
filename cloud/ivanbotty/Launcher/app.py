@@ -109,12 +109,8 @@ class App(Adw.Application):
         scrolled_window.set_hexpand(True)
         scrolled_window.set_child(self.listbox)
 
-        # Load applications at startup
-        if services["app"]:
-            print("Application extension found, loading applications...")
-            services["app"].load_applications()
-            filtered_store = services["app"].filter_applications("")
-            self.listbox.bind_model(filtered_store, self.create_row)
+        extensions_list = self.extensions_service.list_extensions()
+        self.listbox.bind_model(extensions_list, self.create_row)
 
         # Create footer widget
         footer = Footer(self)
@@ -133,9 +129,10 @@ class App(Adw.Application):
 
     def create_row(self, app):
         """Create a row widget for the given app."""
-        row = Row(app)
-        row.app_model = app
-        return row
+        if app.enabled is True:
+            row = Row(app)
+            row.app_model = app
+            return row
 
     def do_activate(self):
         """Activate the application and show the window."""
