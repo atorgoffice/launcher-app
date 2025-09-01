@@ -65,11 +65,14 @@ class SearchController:
         # Update the ListBox based on input type
         self.listbox.remove_all()
         if input_type == "empty":
+            extensions_list = self.services["extensions"].list_extensions()
+            self.listbox.bind_model(extensions_list, self.create_row_for_extension)
             return
         if input_type == "math":
             result = self.services["math"].calculate(data)
             self.listbox.append(Gtk.Label(label=f"Result: {result}"))
         elif input_type == "app":
+            self.services["app"].load_applications()
             apps = self.services["app"].filter_applications(data)
             self.listbox.bind_model(apps, lambda app: self.create_row(app))
         elif input_type == "link":
@@ -86,3 +89,11 @@ class SearchController:
         row = Row(app)
         row.app_model = app
         return row
+
+    def create_row_for_extension(self, app):
+        """Create a row widget for the given app extension."""
+        if getattr(app, "enabled", False):
+            row = Row(app)
+            row.app_model = app
+            return row
+        return None
