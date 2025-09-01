@@ -2,6 +2,7 @@
 <gresources>
     <gresource prefix="/cloud/ivanbotty/Launcher/resources">
         <file>appdata.xml</file>
+        <file>release.xml</file>
         <file>icons8-ricerca-48.svg</file>
         <file>icons8-ricerca-96.svg</file>
         <file>icons8-ricerca-144.svg</file>

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>cloud.ivanbotty.Launcher</id>
-  <name>Launcher</name>
+  <name>Launcher 2</name>
   <summary>A modern GTK4/Adwaita desktop launcher for Linux.</summary>
   <description>A modern GTK4/Adwaita desktop launcher for Linux.</description>
-  <developer_name>Ivan Bottigelli</developer_name>
+  <developer>
+    <name>Ivan Bottigelli</name>
+    <email>ivanbottigelli@example.com</email>
+  </developer>
   <project_license>GPL-3.0-or-later</project_license>
+  <copyright>Copyright © 2024 Ivan Bottigelli</copyright>
   <url type="homepage">https://github.com/BottyIvan/launcher-app</url>
   <url type="help">https://github.com/BottyIvan/launcher-app/wiki</url>
   <url type="bugtracker">https://github.com/BottyIvan/launcher-app/issues</url>
-  <release>
-    <version>0.0.1</version>
-    <description>Initial release.</description>
-  </release>
+  <provides>
+    <id>cloud.ivanbotty.Launcher.desktop</id>
+  </provides>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <icon type="stock">cloud-ivanbotty-launcher</icon>
 </component>
