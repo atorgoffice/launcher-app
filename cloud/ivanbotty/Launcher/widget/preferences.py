@@ -43,7 +43,7 @@ class Preferences(Adw.PreferencesDialog):
         )
         info_row.set_activatable(True)
         def on_info_row_activated(row):
-            Adw.AboutDialog.new_from_appdata("/cloud/ivanbotty/Launcher/resources/appdata.xml", None).present()
+            Adw.AboutDialog.new_from_appdata("/cloud/ivanbotty/Launcher/resources/appdata.xml", "/cloud/ivanbotty/Launcher/resources/release.xml").present()
 
         info_row.connect("activated", on_info_row_activated)
 
