@@ -6,9 +6,9 @@
   <description>A modern GTK4/Adwaita desktop launcher for Linux.</description>
   <developer_name>Ivan Bottigelli</developer_name>
   <project_license>GPL-3.0-or-later</project_license>
-  <url type="homepage">https://www.example.com</url>
-  <url type="help">https://www.example.com/help</url>
-  <url type="bugtracker">https://www.example.com/bugs</url>
+  <url type="homepage">https://github.com/BottyIvan/launcher-app</url>
+  <url type="help">https://github.com/BottyIvan/launcher-app/wiki</url>
+  <url type="bugtracker">https://github.com/BottyIvan/launcher-app/issues</url>
   <release>
     <version>0.0.1</version>
     <description>Initial release.</description>
