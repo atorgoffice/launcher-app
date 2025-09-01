@@ -1,3 +1,4 @@
+from email.mime import application
 import os, gi
 
 gi.require_version("Gtk", "4.0")
@@ -20,24 +21,23 @@ class ApplicationsService:
         """
         Load application entries from directories specified in ALL_APP_DIRS.
 
-        Iterates through each directory, finds files ending with '.desktop',
-        parses them into ApplicationModel instances, and appends them to the store.
+        Parses '.desktop' files into ApplicationModel instances and appends them to the store.
+        Ensures each application is loaded only once by name.
 
         Returns:
             Gio.ListStore: Store containing loaded ApplicationModel instances.
         """
+        loaded_names = set()
+        self.store.remove_all()
         for app_dir in ALL_APP_DIRS:
-            # Ensure the directory exists and is a directory
             if app_dir.exists() and app_dir.is_dir():
-                # Iterate over all files in the directory
                 for file in os.listdir(app_dir):
-                    # Only process files with '.desktop' extension
                     if file.endswith(".desktop"):
-                        # Parse the desktop entry file
-                        new_entry = self.parser.parse_desktop_entry(os.path.join(app_dir, file))
-                        # If parsing was successful, add to the store
-                        if new_entry:
-                            self.store.append(ApplicationModel(**new_entry))
+                        file_path = os.path.join(app_dir, file)
+                        entry_data = self.parser.parse_desktop_entry(file_path)
+                        if entry_data and entry_data['name'] not in loaded_names:
+                            self.store.append(ApplicationModel(**entry_data))
+                            loaded_names.add(entry_data['name'])
         return self.store
 
     def filter_applications(self, search_text=""):
