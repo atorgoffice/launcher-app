@@ -39,8 +39,15 @@ UI_CONFS = {
     }
 }
 
-# Default user preference for style
-PREFERENCES = db.get_pref("layout", "default")
+# Retrieve the user's preferred UI style from the database.
+# If the preference is not set or invalid, fall back to the default style.
+try:
+    pref = db.get_pref("layout", "default")
+    PREFERENCES = pref if pref in UI_CONFS else "default"
+except Exception:
+    # On error (e.g., database unavailable), use the default style and log the issue.
+    PREFERENCES = "default"
+    print("Failed to get preferences, using default.")
 
 SYSTEM_PROMPT = (
     "You are a helpful assistant focused on concise, accurate answers. "
