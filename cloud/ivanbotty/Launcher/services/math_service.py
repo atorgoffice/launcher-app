@@ -29,4 +29,5 @@ class MathService:
             result = eval(expression, {"__builtins__": {}}, self.safe_dict)
             return str(result)
         except Exception as e:
-            return f"Error: {e}"
+            print(f"Math evaluation error: {e}")
+            return f"Error: Could not evaluate '{expression}'. Please check your input."
