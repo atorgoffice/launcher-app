@@ -13,7 +13,7 @@ class ExtensionModel(GObject.GObject):
         super().__init__()
         self.name = name
         self.description = description
+        self.service = service
         self.enabled = enabled
         self.version = version
         self.author = author
-        self.service = service
