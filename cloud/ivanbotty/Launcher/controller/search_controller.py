@@ -76,13 +76,13 @@ class SearchController:
             apps = self.services["app"].filter_applications(data)
             self.listbox.bind_model(apps, lambda app: self.create_row(app))
         elif input_type == "link":
-            self.listbox.append(Gtk.Label(label=f"Link: {data}"))
+            self.listbox.insert(Gtk.Label(label=f"Link: {data}"), 0)
         elif input_type == "ask":
-            self.listbox.append(Gtk.Label(label=f"Ask: {data}"))
+            self.listbox.insert(Gtk.Label(label=f"Ask: {data}"), 0)
         elif input_type == "command":
             commands = self.services["command"].filter_commands(data)
             for cmd in commands:
-                self.listbox.append(Gtk.Label(label=cmd.name))
+                self.listbox.insert(Gtk.Label(label=cmd.name), 0)
 
     def create_row(self, app):
         # Create a Row widget for an application
