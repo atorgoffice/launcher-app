@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>cloud.ivanbotty.Launcher</id>
-  <name>Launcher 2</name>
+  <name>Launcher</name>
   <summary>A modern GTK4/Adwaita desktop launcher for Linux.</summary>
   <description>A modern GTK4/Adwaita desktop launcher for Linux.</description>
+  <releases>
+    <release version="0.0.1" date="2025-05-10">
+      <description>
+        <p>Initial release of Launcher.</p>
+      </description>
+    </release>
+  </releases>
   <developer>
     <name>Ivan Bottigelli</name>
     <email>ivanbottigelli@example.com</email>
