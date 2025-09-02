@@ -39,7 +39,7 @@ class Preferences(Adw.PreferencesDialog):
         # Information row
         info_row = Adw.ActionRow(
             title="About",
-            subtitle="Launcher App Preferences Demo"
+            subtitle="Information about this application."
         )
         info_row.set_activatable(True)
         def on_info_row_activated(row):
