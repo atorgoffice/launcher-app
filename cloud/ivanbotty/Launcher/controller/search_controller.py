@@ -70,7 +70,7 @@ class SearchController:
             return
         if input_type == "math":
             result = self.services["math"].calculate(data)
-            self.listbox.append(Gtk.Label(label=f"Result: {result}"))
+            self.listbox.insert(Gtk.Label(label=f"Result: {result}"), 0)
         elif input_type == "app":
             self.services["app"].load_applications()
             apps = self.services["app"].filter_applications(data)
