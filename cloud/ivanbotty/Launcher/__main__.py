@@ -4,7 +4,7 @@ import gi
 # Set the required GTK version
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gio
-from cloud.ivanbotty.database.sqlite3 import init_db
+import cloud.ivanbotty.database.sqlite3 as db
 from cloud.ivanbotty.Launcher.app import App
 
 def main():
@@ -18,7 +18,7 @@ def main():
     
     # Initialize the SQLite3 database
     try:
-        init_db()
+        db.init_db()
     except Exception as e:
         print(f"Failed to initialize database: {e}")
         return
