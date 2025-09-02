@@ -3,7 +3,7 @@
 > **Launcher** is currently under active development. Features, interfaces, and functionality may change frequently. Contributions and feedback are welcome!
 
 <p align="center">
-    <img src="./cloud/ivanbotty/Launcher/resources/icons8-ricerca-96.svg" alt="Launcher Icon" width="96">
+    <img src="./cloud/ivanbotty/Launcher/resources/cloud.ivanbotty.Launcher.svg" alt="Launcher Icon" width="96">
 </p>
 
 **Launcher** is a modern desktop application launcher for Linux, built with GTK4 and Adwaita. It features instant search, a sleek user interface, and seamless integration for launching your installed applications.
@@ -65,8 +65,8 @@ python -m cloud.ivanbotty.Launcher
 
 ### Flatpak
 
-> [!NOTE]
->  If you install the app as a Flatpak, system-installed apps will not be visible.
+> [!WARNING]
+> If you install the app as a Flatpak, application icons may not display correctly due to sandboxing limitations.
 
 The project includes a `manifest.yaml` file for building a Flatpak package.
 
@@ -77,6 +77,7 @@ flatpak-builder --run build-dir manifest.yaml launcher
 
 ## Project Structure
 
+- `cloud/ivanbotty/database/`: SQLite integration layer for managing persistent data and queries
 - `cloud/ivanbotty/Launcher/`: main source code
 - `resources/`: SVG icons and appdata files
 - `manifest.yaml`: Flatpak manifest
