@@ -1,3 +1,4 @@
+import cloud.ivanbotty.database.sqlite3 as db
 from pathlib import Path
 
 SYSTEM_DIRS = [
@@ -39,7 +40,7 @@ UI_CONFS = {
 }
 
 # Default user preference for style
-PREFERENCES = DEFAULT_STYLE
+PREFERENCES = db.get_pref("layout", "default")
 
 SYSTEM_PROMPT = (
     "You are a helpful assistant focused on concise, accurate answers. "
