@@ -43,7 +43,10 @@ class Preferences(Adw.PreferencesDialog):
         )
         info_row.set_activatable(True)
         def on_info_row_activated(row):
-            Adw.AboutDialog.new_from_appdata("/cloud/ivanbotty/Launcher/resources/appdata.xml", "/cloud/ivanbotty/Launcher/resources/release.xml").present()
+            about = Adw.AboutDialog.new_from_appdata("/cloud/ivanbotty/Launcher/resources/appdata.xml", "0.0.1")
+            about.set_developers(["Ivan Bottigelli https://ivanbotty.cloud"])
+            about.set_copyright("© 2025 Ivan Bottigelli.")
+            about.present()
 
         info_row.connect("activated", on_info_row_activated)
 
